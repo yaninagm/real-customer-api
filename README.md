@@ -1,4 +1,4 @@
-# social-network-test
+# real-customer
 
 ## Requirements
 
