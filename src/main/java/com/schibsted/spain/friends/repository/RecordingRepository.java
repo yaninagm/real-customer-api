@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RecordingRepository extends JpaRepository<User, Long> {
+public interface RecordingRepository extends JpaRepository<Recording, Long> {
 }
