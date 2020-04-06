@@ -8,14 +8,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerEntrance {
 
-    //@Autowired
-    //private RecordingRepository recordingRepository;
+    @Autowired
+    private RecordingRepository recordingRepository;
 
     public  void customerEntrance(String username){
         System.out.println("[method:customerEntrance][userName: "+ username + "]");
         Recording recording = new Recording();
         recording.setToken(username);
-        //recordingRepository.save(recording);
+        recordingRepository.save(recording);
+        
     }
 
 }
