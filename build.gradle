@@ -26,6 +26,9 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	//compile ("mysql-connector-java:jar:5.1.6")
+	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
+	runtime "mysql:mysql-connector-java:8.0.15"
 	compile ("org.springframework.boot:spring-boot-starter-data-jpa")
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	implementation('org.springframework.boot:spring-boot-starter-jdbc')

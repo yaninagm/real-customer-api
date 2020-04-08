@@ -11,10 +11,10 @@ public class CustomerEntrance {
     @Autowired
     private RecordingRepository recordingRepository;
 
-    public  void customerEntrance(String username){
-        System.out.println("[method:customerEntrance][userName: "+ username + "]");
+    public  void customerEntrance(Recording recording1){
+        System.out.println("[method:customerEntrance][userName: "+ recording1 + "]");
         Recording recording = new Recording();
-        recording.setToken(username);
+        recording.setToken(recording1.getToken());
         recordingRepository.save(recording);
         
     }

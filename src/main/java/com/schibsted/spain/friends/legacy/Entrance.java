@@ -1,11 +1,9 @@
 package com.schibsted.spain.friends.legacy;
 
+import com.schibsted.spain.friends.model.Recording;
 import com.schibsted.spain.friends.service.CustomerEntrance;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customerEntrance")
@@ -16,9 +14,9 @@ public class Entrance {
 
   @PostMapping
   void customerEntrance(
-          @RequestBody String username
+          @RequestBody Recording recording
   ) throws Exception {
-      System.out.println("[method:entrance] [username: "+username+"]");
-      customerEntrance.customerEntrance(username);
+      System.out.println("[method:entrance] [username: "+recording.getToken()+"]");
+      customerEntrance.customerEntrance(recording);
   }
 }
