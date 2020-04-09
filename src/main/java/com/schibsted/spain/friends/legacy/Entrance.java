@@ -16,7 +16,7 @@ public class Entrance {
   void customerEntrance(
           @RequestBody Recording recording
   ) throws Exception {
-      System.out.println("[method:entrance] [username: "+recording.getToken()+"]");
+      System.out.println("[method:entrance] [username: "+recording.getEmbedding_image()+"]");
       customerEntrance.customerEntrance(recording);
   }
 }

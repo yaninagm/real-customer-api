@@ -12,11 +12,14 @@ public class CustomerEntrance {
     private RecordingRepository recordingRepository;
 
     public  void customerEntrance(Recording recording1){
-        System.out.println("[method:customerEntrance][userName: "+ recording1 + "]");
-        Recording recording = new Recording();
-        recording.setToken(recording1.getToken());
-        recordingRepository.save(recording);
+        System.out.println("[method:customerEntrance][userName: "+ recording1.getEmbedding_image() + "]");
+        recordingRepository.save(recording1);
+        calculateDistance(recording1.getEmbedding_image());
         
+    }
+
+    public void calculateDistance(String Token){
+
     }
 
 }

@@ -7,7 +7,7 @@ public class Recording {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String token;
+    private String embedding_image;
     private String position;
 
     @Column (name = "id", nullable = true)
@@ -19,13 +19,13 @@ public class Recording {
         this.id = id;
     }
 
-    @Column (name = "token", nullable = true)
-    public String getToken() {
-        return token;
+    @Column (name = "embedding_image", nullable = true)
+    public String getEmbedding_image() {
+        return embedding_image;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setEmbedding_image(String embedding_image) {
+        this.embedding_image = embedding_image;
     }
 
     @Column (name = "position", nullable = true)
@@ -42,7 +42,7 @@ public class Recording {
     public String toString() {
         return "Recording{" +
                 "id=" + id +
-                ", token='" + token + '\'' +
+                ", embedding_image='" + embedding_image + '\'' +
                 ", position='" + position + '\'' +
                 '}';
     }

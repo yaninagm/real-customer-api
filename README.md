@@ -42,3 +42,6 @@ The use cases that need to be implemented are:
 ## Build & Run
 
 `./gradlew bootRun`
+
+## Run Test
+bash -c scripts/legacy-test
