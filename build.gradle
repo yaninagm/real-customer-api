@@ -23,6 +23,20 @@ repositories {
 	mavenCentral()
 }
 
+def profiles = 'prod'
+if (project.hasProperty('dev')) { //parameter -Pdev
+	profiles = 'dev'
+}
+if (project.hasProperty('test')) { //parameter -Pdev
+	profiles = 'test'
+}
+
+bootRun {
+	args = ["--spring.profiles.active=" + profiles]
+	System.out.println("profiles " + profiles)
+	System.out.println("validation isProd?: " + project.hasProperty('prod'))
+	System.out.println("validation isDev?: " + project.hasProperty('dev'))
+}
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")

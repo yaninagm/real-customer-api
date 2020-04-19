@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/realCustomer
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+
+  h2:
+    console:
+      enabled: true
+server:
+  port: 8080

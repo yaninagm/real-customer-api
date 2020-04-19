@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: test
+  datasource:
+    url: jdbc:h2:mem:test
+  jpa:
+    show-sql: true
+
+  h2:
+    console:
+      enabled: true
+server:
+  port: 8080
