@@ -9,6 +9,7 @@ public class Recording {
     private Long id;
     private String embedding_image;
     private String position;
+    private String image;
 
     @Column (name = "id", nullable = true)
     public Long getId() {
@@ -37,6 +38,13 @@ public class Recording {
         this.position = position;
     }
 
+    @Column (name = "image", nullable = true)
+    public String getImage() {
+        return image;
+    }
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     @Override
     public String toString() {

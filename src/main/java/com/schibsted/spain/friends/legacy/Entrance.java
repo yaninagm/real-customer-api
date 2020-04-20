@@ -13,10 +13,17 @@ public class Entrance {
     private CustomerEntrance customerEntrance;
 
   @PostMapping
-  void customerEntrance(
+  void createCustomerEntrance(
           @RequestBody Recording recording
   ) throws Exception {
       System.out.println("[method:entrance] [username: "+recording.getEmbedding_image()+"]");
-      customerEntrance.customerEntrance(recording);
+      customerEntrance.createCustomerEntrance(recording);
   }
+
+    @GetMapping
+    Object getCustomerEntrance(
+    ) throws Exception {
+        System.out.println("[method:entrance] [username: ");
+        return  customerEntrance.getCustomerEntrance();
+    }
 }

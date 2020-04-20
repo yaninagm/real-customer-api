@@ -40,12 +40,12 @@ The use cases that need to be implemented are:
 ?username=#username  -H X-Password:
 
 ## Build & Run
-gradle clean bootn bootRun -Pdev
+gradle clean bootRun -Pdev
 
 `./gradlew bootRun`
 
 ## Run Test
-gradle clean bootn bootRun -Ptest
+gradle clean bootRun -Ptest
 
 
 bash -c scripts/legacy-test
