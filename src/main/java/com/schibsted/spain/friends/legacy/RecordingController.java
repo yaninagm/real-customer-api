@@ -13,10 +13,10 @@ public class RecordingController {
     private CustomerEntrance customerEntrance;
 
   @PostMapping
-  void createCustomerEntrance(
+  Object createCustomerEntrance(
           @RequestBody RecordingDto recording
   ) throws Exception {
-      customerEntrance.createCustomerEntrance(recording);
+      return customerEntrance.createCustomerEntrance(recording);
   }
 
     @GetMapping

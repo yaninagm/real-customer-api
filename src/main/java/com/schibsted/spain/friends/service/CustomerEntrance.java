@@ -1,8 +1,11 @@
 package com.schibsted.spain.friends.service;
 
 import com.schibsted.spain.friends.dto.RecordingDto;
+import com.schibsted.spain.friends.dto.UserDto;
 import com.schibsted.spain.friends.model.Recording;
+import com.schibsted.spain.friends.model.User;
 import com.schibsted.spain.friends.repository.RecordingRepository;
+import com.schibsted.spain.friends.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +20,10 @@ public class CustomerEntrance {
     private RecordingRepository recordingRepository;
     @Autowired
     private CosineSimilarity cosineSimilarity;
+    @Autowired
+    private UserRepository userRepository ;
 
-    public  void createCustomerEntrance(RecordingDto recordingDto){
+    public UserDto createCustomerEntrance(RecordingDto recordingDto){
         Recording recording = new Recording();
         recording.setImage(recordingDto.getImage());
         String listString = (String) recordingDto.getEmbedding_image().stream().map(Object::toString)
@@ -27,29 +32,39 @@ public class CustomerEntrance {
         recording.setPosition(recordingDto.getPosition());
 
         List<Recording> recordings = getCustomerEntrance();
+        Recording originalRecording = null;
         boolean isSameEmbedding=false;
         if (!recordings.isEmpty()) {
-            isSameEmbedding = isSameEmbeding(recordings, recordingDto);
+            originalRecording = sameEmbeding(recordings, recordingDto);
         }
 
-        if(!isSameEmbedding){
+        if( originalRecording == null){
+            User newUser = new User("", "");
+            newUser = userRepository.save(newUser);
+            recording.setUserId(newUser.getId());
             recordingRepository.save(recording);
-        }
+            System.out.println(">>>>> "+ recording.getUserId() );
 
+            UserDto userDto = new UserDto(newUser.getId(), recordingDto.getImage());
+            return userDto;
+        }
+        User user = userRepository.getOne(originalRecording.getUserId());
+        UserDto userDto = new UserDto(user.getId(), user.getUserName(), user.getUserName(), user.getUserName(), user.getImage());
+        return userDto;
         
     }
 
-    public  boolean isSameEmbeding(List<Recording> recordings, RecordingDto recordingDto){
-            for (Recording oldRecording: recordings){
-                String[] lala =oldRecording.getEmbedding_image().split(",");
+    public  Recording sameEmbeding(List<Recording> recordings, RecordingDto recordingDto){
+            for (Recording originalRecording: recordings){
+                String[] lala =originalRecording.getEmbedding_image().split(",");
                 double[] doubleArray = Arrays.stream(lala).mapToDouble(Double::parseDouble).toArray();
                 double result = calculateDistance(recordingDto.getEmbedding_image(),doubleArray);
                 if(result > 0.9999999999999988){
-                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>< IGUAL <<<<<<<<<<<<<<<< : " + oldRecording.getId());
-                    return true;
+                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>< IGUAL <<<<<<<<<<<<<<<< : " + originalRecording.getId());
+                    return originalRecording;
                 }
             }
-            return false;
+            return null;
     }
 
     public double calculateDistance(List embedding, double[] oldEmbedding){
