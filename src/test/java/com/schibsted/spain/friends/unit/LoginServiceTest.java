@@ -2,8 +2,8 @@ package com.schibsted.spain.friends.unit;
 
 import com.schibsted.spain.friends.model.User;
 import com.schibsted.spain.friends.repository.UserRepository;
-import com.schibsted.spain.friends.service.LoginService;
 import com.schibsted.spain.friends.service.ValidationsService;
+import com.schibsted.spain.friends.service.LoginService;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;

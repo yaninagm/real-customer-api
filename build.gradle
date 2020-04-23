@@ -33,9 +33,6 @@ if (project.hasProperty('test')) { //parameter -Pdev
 
 bootRun {
 	args = ["--spring.profiles.active=" + profiles]
-	System.out.println("profiles " + profiles)
-	System.out.println("validation isProd?: " + project.hasProperty('prod'))
-	System.out.println("validation isDev?: " + project.hasProperty('dev'))
 }
 
 dependencies {
@@ -46,4 +43,6 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	implementation('org.springframework.boot:spring-boot-starter-jdbc')
 	runtime("com.h2database:h2:1.3.176")
+
+	compile group: 'gov.nist.math', name: 'jama', version: '1.0.3'
 }

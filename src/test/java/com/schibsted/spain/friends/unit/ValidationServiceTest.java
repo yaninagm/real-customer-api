@@ -1,10 +1,8 @@
 package com.schibsted.spain.friends.unit;
 
 import com.schibsted.spain.friends.model.User;
-import com.schibsted.spain.friends.repository.FriendshipRequestRepository;
 import com.schibsted.spain.friends.repository.UserRepository;
 import com.schibsted.spain.friends.service.ValidationsService;
-import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -20,8 +18,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @ActiveProfiles("test")

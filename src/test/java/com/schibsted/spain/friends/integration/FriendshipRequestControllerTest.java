@@ -2,7 +2,6 @@ package com.schibsted.spain.friends.integration;
 
 import com.schibsted.spain.friends.config.Constants;
 import com.schibsted.spain.friends.legacy.FriendshipLegacyController;
-import com.schibsted.spain.friends.legacy.SignupLegacyController;
 import com.schibsted.spain.friends.model.FriendshipRequest;
 import com.schibsted.spain.friends.model.User;
 import com.schibsted.spain.friends.repository.FriendshipRequestRepository;
@@ -10,7 +9,6 @@ import com.schibsted.spain.friends.repository.UserRepository;
 import com.schibsted.spain.friends.service.FriendshipService;
 import com.schibsted.spain.friends.service.LoginService;
 import com.schibsted.spain.friends.service.ValidationsService;
-import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -26,16 +24,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)

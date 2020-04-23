@@ -2,11 +2,10 @@ package com.schibsted.spain.friends.unit;
 
 import com.schibsted.spain.friends.config.Constants;
 import com.schibsted.spain.friends.model.FriendshipRequest;
-import com.schibsted.spain.friends.model.User;
-import com.schibsted.spain.friends.repository.FriendshipRequestRepository;
 import com.schibsted.spain.friends.repository.UserRepository;
 import com.schibsted.spain.friends.service.FriendshipService;
 import com.schibsted.spain.friends.service.ValidationsService;
+import com.schibsted.spain.friends.repository.FriendshipRequestRepository;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -18,14 +17,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 

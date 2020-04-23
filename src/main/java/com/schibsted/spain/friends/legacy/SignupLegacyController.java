@@ -1,7 +1,7 @@
 package com.schibsted.spain.friends.legacy;
 
-import com.schibsted.spain.friends.service.LoginService;
 import com.schibsted.spain.friends.service.ValidationsService;
+import com.schibsted.spain.friends.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;

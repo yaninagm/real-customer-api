@@ -49,3 +49,8 @@ gradle clean bootRun -Ptest
 
 
 bash -c scripts/legacy-test
+
+
+## Distancia entre image embedding
+
+https://scikit-learn.org/stable/modules/metrics.html#metrics
