@@ -13,6 +13,9 @@ public class User {
     private String userName;
     private String password;
     private String image;
+    private Long entranceByDay;
+    private Long entranceByMonth;
+    private Long historyEntrance;
 
     public User() {
     }
@@ -22,14 +25,6 @@ public class User {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 
 
     public Long getId() {
@@ -65,4 +60,38 @@ public class User {
     public void setImage(String image) {
         this.image = image;
     }
+
+
+    @Column (name = "entrance_by_day", nullable = true)
+    public Long getEntranceByDay() {
+        return entranceByDay;
+    }
+
+    public void setEntranceByDay(Long entranceByDay) {
+        this.entranceByDay = entranceByDay;
+    }
+
+    @Column (name = "entrance_by_month", nullable = true)
+    public Long getEntranceByMonth() {
+        return entranceByMonth;
+    }
+
+    public void setEntranceByMonth(Long entranceByMonth) {
+        this.entranceByMonth = entranceByMonth;
+    }
+
+    @Column (name = "history_entrance", nullable = true)
+    public Long getHistoryEntrance() {
+        return historyEntrance;
+    }
+
+    public void setHistoryEntrance(Long historyEntrance) {
+        this.historyEntrance = historyEntrance;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
 }
