@@ -23,7 +23,7 @@ repositories {
 	mavenCentral()
 }
 
-def profiles = 'prod'
+def profiles = 'test'
 if (project.hasProperty('dev')) { //parameter -Pdev
 	profiles = 'dev'
 }
