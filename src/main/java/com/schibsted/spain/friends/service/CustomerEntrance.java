@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,15 +32,20 @@ public class CustomerEntrance {
         recording.setEmbedding_image(listString);
         recording.setPosition(recordingDto.getPosition());
 
-        List<Recording> recordings = getCustomerEntrance();
-        Recording originalRecording = null;
+        List<Recording> oldrecordings = getCustomerEntrance();
+        Recording sameEmbedding = null;
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>1");
         boolean isSameEmbedding=false;
-        if (!recordings.isEmpty()) {
-            originalRecording = sameEmbeding(recordings, recordingDto);
+
+        if (!oldrecordings.isEmpty()) {
+            sameEmbedding = sameEmbeding(oldrecordings, recordingDto);
+            System.out.println(sameEmbedding == null );
+
         }
 
-        if( originalRecording == null){
+        if(Objects.isNull(sameEmbedding)){
             User newUser = new User("", "");
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>2: "+sameEmbedding);
             newUser = userRepository.save(newUser);
             recording.setUserId(newUser.getId());
             recordingRepository.save(recording);
@@ -48,7 +54,8 @@ public class CustomerEntrance {
             UserDto userDto = new UserDto(newUser.getId(), recordingDto.getImage());
             return userDto;
         }
-        User user = userRepository.getOne(originalRecording.getUserId());
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>3 : "+sameEmbedding);
+        User user = userRepository.getOne(sameEmbedding.getUserId());
         UserDto userDto = new UserDto(user.getId(), user.getUserName(), user.getUserName(), user.getUserName(), user.getImage());
         return userDto;
         

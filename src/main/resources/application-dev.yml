@@ -5,10 +5,10 @@ spring:
     username: root
     password: root
   jpa:
-    show-sql: false
+    show-sql: true
 
   h2:
     console:
-      enabled: false
+      enabled: true
 server:
   port: 8080
