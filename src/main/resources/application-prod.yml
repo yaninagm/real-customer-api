@@ -1,14 +1,13 @@
 spring:
+  profiles:
+    active: test
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: eu-cdbr-west-03.cleardb.net
-    username: bcc884521f4803
-    password: 48701a84
+    url: jdbc:h2:mem:test
   jpa:
-    show-sql: true
+    show-sql: false
 
   h2:
     console:
-      enabled: true
+      enabled: false
 server:
   port: 8080
