@@ -34,7 +34,6 @@ public class CustomerEntrance {
 
         List<Recording> oldrecordings = getCustomerEntrance();
         Recording sameEmbedding = null;
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>1");
         boolean isSameEmbedding=false;
 
         if (!oldrecordings.isEmpty()) {
@@ -45,16 +44,12 @@ public class CustomerEntrance {
 
         if(Objects.isNull(sameEmbedding)){
             User newUser = new User("", "");
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>2: "+sameEmbedding);
             newUser = userRepository.save(newUser);
             recording.setUserId(newUser.getId());
             recordingRepository.save(recording);
-            System.out.println(">>>>> "+ recording.getUserId() );
-
             UserDto userDto = new UserDto(newUser.getId(), recordingDto.getImage());
             return userDto;
         }
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>3 : "+sameEmbedding);
         User user = userRepository.getOne(sameEmbedding.getUserId());
         UserDto userDto = new UserDto(user.getId(), user.getUserName(), user.getUserName(), user.getUserName(), user.getImage());
         return userDto;
