@@ -79,7 +79,7 @@ public class CustomerEntrance {
                 String[] lala =originalRecording.getEmbedding_image().split(",");
                 double[] doubleArray = Arrays.stream(lala).mapToDouble(Double::parseDouble).toArray();
                 double result = calculateDistance(recordingDto.getEmbedding_image(),doubleArray);
-                if(result > 0.999999999999991{
+                if(result > 0.9){
                     System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>< IGUAL <<<<<<<<<<<<<<<< : " + originalRecording.getId());
                     return originalRecording;
                 }
