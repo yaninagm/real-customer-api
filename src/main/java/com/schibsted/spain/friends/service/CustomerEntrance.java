@@ -47,6 +47,7 @@ public class CustomerEntrance {
         recording.setImage(recordingDto.getImage());
         String listString = (String) recordingDto.getEmbedding_image().stream().map(Object::toString)
                 .collect(Collectors.joining(", "));
+
         recording.setEmbedding_image(listString);
         recording.setPosition(recordingDto.getPosition());
         User newUser = new User("", recordingDto.getImage());
@@ -63,6 +64,7 @@ public class CustomerEntrance {
             sameEmbedding = sameEmbeding(oldrecordings, recordingDto);
         }
         if(Objects.isNull(sameEmbedding)){
+            System.out.println(">>>>>>>>>>>>>>>>>>>> NO EXISTE!!");
             return null;
         }
         User user = userRepository.getOne(sameEmbedding.getUserId());
