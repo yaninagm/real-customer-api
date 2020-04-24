@@ -24,44 +24,52 @@ public class CustomerEntrance {
     @Autowired
     private UserRepository userRepository ;
     @Autowired
-    private CountingEntrance countingEntrance;
+    private CounterEntrance counterEntrance;
 
-    public UserDto createCustomerEntrance(RecordingDto recordingDto){
+
+    public UserDto saveNewCustomerEntrance(RecordingDto recordingDto){
+        User user = getRelatedUser(recordingDto);
+        if (Objects.isNull(user)){
+            User newUser = createRecordingAndUser(recordingDto);
+            UserDto userDto = new UserDto(newUser.getId(), recordingDto.getImage());
+            return userDto;
+        }
+        UserDto userDto = new UserDto(user.getId(), user.getUserName(), user.getUserName(), user.getUserName(), user.getImage());
+        userDto.setEntranceByDay(counterEntrance.dailyEntranceCount(user));
+        userDto.setEntranceByMonth(counterEntrance.monthlyEntranceCount(user));
+        userDto.setHistoryEntrance(counterEntrance.historyEntranceCount(user));
+        return userDto;
+        
+    }
+
+    public User createRecordingAndUser(RecordingDto recordingDto){
         Recording recording = new Recording();
         recording.setImage(recordingDto.getImage());
         String listString = (String) recordingDto.getEmbedding_image().stream().map(Object::toString)
                 .collect(Collectors.joining(", "));
         recording.setEmbedding_image(listString);
         recording.setPosition(recordingDto.getPosition());
+        User newUser = new User("", recordingDto.getImage());
+        newUser = userRepository.save(newUser);
+        recording.setUserId(newUser.getId());
+        recordingRepository.save(recording);
+        return newUser;
+    }
 
+    public User getRelatedUser(RecordingDto recordingDto){
         List<Recording> oldrecordings = getCustomerEntrance();
         Recording sameEmbedding = null;
-        boolean isSameEmbedding=false;
-
         if (!oldrecordings.isEmpty()) {
             sameEmbedding = sameEmbeding(oldrecordings, recordingDto);
-        }else{
-
         }
-
         if(Objects.isNull(sameEmbedding)){
-            User newUser = new User("", recordingDto.getImage());
-            newUser = userRepository.save(newUser);
-            recording.setUserId(newUser.getId());
-            recordingRepository.save(recording);
-            UserDto userDto = new UserDto(newUser.getId(), recordingDto.getImage());
-            return userDto;
+            return null;
         }
         User user = userRepository.getOne(sameEmbedding.getUserId());
         if (Objects.isNull(user)){
             user = new User("", recordingDto.getImage());
         }
-        UserDto userDto = new UserDto(user.getId(), user.getUserName(), user.getUserName(), user.getUserName(), user.getImage());
-        userDto.setEntranceByDay(countingEntrance.dailyEntranceCount(user));
-        userDto.setEntranceByMonth(countingEntrance.monthlyEntranceCount(user));
-        userDto.setHistoryEntrance(countingEntrance.historyEntranceCount(user));
-        return userDto;
-        
+        return user;
     }
 
     public  Recording sameEmbeding(List<Recording> recordings, RecordingDto recordingDto){

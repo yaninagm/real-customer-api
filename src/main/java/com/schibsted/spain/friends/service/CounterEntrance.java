@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class CountingEntrance {
+public class CounterEntrance {
     @Autowired
     private UserRepository userRepository ;
 
