@@ -17,6 +17,9 @@ public class UserDto {
         this.lastname = lastname;
         this.username = username;
         this.image = image;
+        this.entranceByDay = 0L;
+        this.entranceByMonth = 0L;
+        this.historyEntrance = 0L;
     }
 
     public UserDto(Long id, String image) {
