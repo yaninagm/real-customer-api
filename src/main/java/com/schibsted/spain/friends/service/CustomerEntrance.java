@@ -40,6 +40,8 @@ public class CustomerEntrance {
 
         if (!oldrecordings.isEmpty()) {
             sameEmbedding = sameEmbeding(oldrecordings, recordingDto);
+        }else{
+
         }
 
         if(Objects.isNull(sameEmbedding)){
@@ -51,6 +53,9 @@ public class CustomerEntrance {
             return userDto;
         }
         User user = userRepository.getOne(sameEmbedding.getUserId());
+        if (Objects.isNull(user)){
+            user = new User("", recordingDto.getImage());
+        }
         UserDto userDto = new UserDto(user.getId(), user.getUserName(), user.getUserName(), user.getUserName(), user.getImage());
         userDto.setEntranceByDay(countingEntrance.dailyEntranceCount(user));
         userDto.setEntranceByMonth(countingEntrance.monthlyEntranceCount(user));
