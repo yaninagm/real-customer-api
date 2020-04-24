@@ -79,7 +79,7 @@ public class CustomerEntrance {
                 String[] lala =originalRecording.getEmbedding_image().split(",");
                 double[] doubleArray = Arrays.stream(lala).mapToDouble(Double::parseDouble).toArray();
                 double result = calculateSimilitud(recordingDto.getEmbedding_image(),doubleArray);
-                System.out.println(">>>>> bool: " + (result > 0.9));
+                System.out.println(">>>>> bool: result: " +result + " " + (result > 0.9));
                 if(result > 0.90){
                     System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>< IGUAL <<<<<<<<<<<<<<<< : " + originalRecording.getId() + "result: "+result);
                     return originalRecording;
