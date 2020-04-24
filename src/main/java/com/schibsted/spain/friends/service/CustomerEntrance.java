@@ -29,6 +29,7 @@ public class CustomerEntrance {
 
     public UserDto saveNewCustomerEntrance(RecordingDto recordingDto){
         System.out.println(">>>>>>>>>> ENTRADAAA: " + recordingDto.getEmbedding_image());
+        System.out.println(">>>>>>>>>>> ENTRADA 2log: "+recordingDto.getEmbedding_image().get(0));
         User user = getRelatedUser(recordingDto);
         if (Objects.isNull(user)){
             User newUser = createRecordingAndUser(recordingDto);
@@ -48,6 +49,7 @@ public class CustomerEntrance {
         recording.setImage(recordingDto.getImage());
         String listString = (String) recordingDto.getEmbedding_image().stream().map(Object::toString)
                 .collect(Collectors.joining(", "));
+        System.out.println(">>>>> Recording 3: "+listString);
         recording.setEmbedding_image(listString);
         recording.setPosition(recordingDto.getPosition());
         User newUser = new User("", recordingDto.getImage());
@@ -76,8 +78,8 @@ public class CustomerEntrance {
 
     public  Recording sameEmbeding(List<Recording> recordings, RecordingDto recordingDto){
             for (Recording originalRecording: recordings){
-                String[] lala =originalRecording.getEmbedding_image().split(",");
-                double[] doubleArray = Arrays.stream(lala).mapToDouble(Double::parseDouble).toArray();
+                String[] originalRecordingList =originalRecording.getEmbedding_image().split(",");
+                double[] doubleArray = Arrays.stream(originalRecordingList).mapToDouble(Double::parseDouble).toArray();
                 double result = calculateSimilitud(recordingDto.getEmbedding_image(),doubleArray);
                 System.out.println(">>>>> bool: result: " +result + " " + (result > 0.9));
                 if(result > 0.90){

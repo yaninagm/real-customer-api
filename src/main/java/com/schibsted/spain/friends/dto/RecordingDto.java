@@ -1,9 +1,10 @@
 package com.schibsted.spain.friends.dto;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class RecordingDto {
     private Long id;
-    private List embedding_image;
+    private List<BigDecimal> embedding_image;
     private String position;
     private String image;
 
