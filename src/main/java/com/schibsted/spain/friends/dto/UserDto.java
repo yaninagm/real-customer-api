@@ -22,6 +22,9 @@ public class UserDto {
     public UserDto(Long id, String image) {
         this.id = id;
         this.image = image;
+        this.entranceByDay = 0L;
+        this.entranceByMonth = 0L;
+        this.historyEntrance = 0L;
     }
 
     public Long getId() {

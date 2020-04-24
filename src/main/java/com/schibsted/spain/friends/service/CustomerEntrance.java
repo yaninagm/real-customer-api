@@ -23,6 +23,8 @@ public class CustomerEntrance {
     private CosineSimilarity cosineSimilarity;
     @Autowired
     private UserRepository userRepository ;
+    @Autowired
+    private CountingEntrance countingEntrance;
 
     public UserDto createCustomerEntrance(RecordingDto recordingDto){
         Recording recording = new Recording();
@@ -38,12 +40,10 @@ public class CustomerEntrance {
 
         if (!oldrecordings.isEmpty()) {
             sameEmbedding = sameEmbeding(oldrecordings, recordingDto);
-            System.out.println(sameEmbedding == null );
-
         }
 
         if(Objects.isNull(sameEmbedding)){
-            User newUser = new User("", "");
+            User newUser = new User("", recordingDto.getImage());
             newUser = userRepository.save(newUser);
             recording.setUserId(newUser.getId());
             recordingRepository.save(recording);
@@ -52,6 +52,9 @@ public class CustomerEntrance {
         }
         User user = userRepository.getOne(sameEmbedding.getUserId());
         UserDto userDto = new UserDto(user.getId(), user.getUserName(), user.getUserName(), user.getUserName(), user.getImage());
+        userDto.setEntranceByDay(countingEntrance.dailyEntranceCount(user));
+        userDto.setEntranceByMonth(countingEntrance.monthlyEntranceCount(user));
+        userDto.setHistoryEntrance(countingEntrance.historyEntranceCount(user));
         return userDto;
         
     }

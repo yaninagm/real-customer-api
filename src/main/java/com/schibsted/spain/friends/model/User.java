@@ -20,12 +20,14 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String password) {
+
+    public User(String userName, String image) {
         this.userName = userName;
-        this.password = password;
+        this.image = image;
+        this.entranceByDay = 0L;
+        this.entranceByMonth = 0L;
+        this.historyEntrance = 0L;
     }
-
-
 
     public Long getId() {
         return id;
