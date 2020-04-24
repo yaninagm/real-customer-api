@@ -78,16 +78,17 @@ public class CustomerEntrance {
             for (Recording originalRecording: recordings){
                 String[] lala =originalRecording.getEmbedding_image().split(",");
                 double[] doubleArray = Arrays.stream(lala).mapToDouble(Double::parseDouble).toArray();
-                double result = calculateDistance(recordingDto.getEmbedding_image(),doubleArray);
-                if(result > 0.9){
-                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>< IGUAL <<<<<<<<<<<<<<<< : " + originalRecording.getId());
+                double result = calculateSimilitud(recordingDto.getEmbedding_image(),doubleArray);
+                System.out.println(">>>>> bool: " + (result > 0.9));
+                if(result > 0.90){
+                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>< IGUAL <<<<<<<<<<<<<<<< : " + originalRecording.getId() + "result: "+result);
                     return originalRecording;
                 }
             }
             return null;
     }
 
-    public double calculateDistance(List embedding, double[] oldEmbedding){
+    public double calculateSimilitud(List embedding, double[] oldEmbedding){
         double[][] arr = {embedding.stream().mapToDouble(d -> (double) d).toArray()};
         double result5 = cosineSimilarity.cosineSimilarity(arr[0], oldEmbedding);
         System.out.println("RESULT A-B: "+result5);
