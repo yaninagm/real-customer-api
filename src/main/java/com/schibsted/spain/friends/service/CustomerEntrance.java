@@ -28,6 +28,7 @@ public class CustomerEntrance {
 
 
     public UserDto saveNewCustomerEntrance(RecordingDto recordingDto){
+        System.out.println(">>>>>>>>>> ENTRADAAA: " + recordingDto.getEmbedding_image());
         User user = getRelatedUser(recordingDto);
         if (Objects.isNull(user)){
             User newUser = createRecordingAndUser(recordingDto);
@@ -47,7 +48,6 @@ public class CustomerEntrance {
         recording.setImage(recordingDto.getImage());
         String listString = (String) recordingDto.getEmbedding_image().stream().map(Object::toString)
                 .collect(Collectors.joining(", "));
-
         recording.setEmbedding_image(listString);
         recording.setPosition(recordingDto.getPosition());
         User newUser = new User("", recordingDto.getImage());
