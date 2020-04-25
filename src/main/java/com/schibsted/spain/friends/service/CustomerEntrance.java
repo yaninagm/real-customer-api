@@ -40,9 +40,6 @@ public class CustomerEntrance {
         }
         createRecording(user,recordingDto);
         UserDto userDto = new UserDto(user.getId(), user.getUserName(), user.getUserName(), user.getUserName(), user.getImage());
-        userDto.setEntranceByDay(counterEntrance.dailyEntranceCount(user));
-        userDto.setEntranceByMonth(counterEntrance.monthlyEntranceCount(user));
-        userDto.setHistoryEntrance(counterEntrance.historyEntranceCount(user));
         return userDto;
         
     }
