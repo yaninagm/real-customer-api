@@ -16,7 +16,7 @@ public class RecordingController {
   Object createCustomerEntrance(
           @RequestBody RecordingDto recording
   ) throws Exception {
-      return customerEntrance.createCustomerEntrance(recording);
+      return customerEntrance.saveNewCustomerEntrance(recording);
   }
 
     @GetMapping

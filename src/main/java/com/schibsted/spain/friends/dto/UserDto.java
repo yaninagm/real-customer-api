@@ -7,6 +7,9 @@ public class UserDto {
     private String lastname;
     private String username;
     private String image;
+    private Long entranceByDay;
+    private Long entranceByMonth;
+    private Long historyEntrance;
 
     public UserDto(Long id, String name, String lastname, String username, String image) {
         this.id = id;
@@ -14,11 +17,17 @@ public class UserDto {
         this.lastname = lastname;
         this.username = username;
         this.image = image;
+        this.entranceByDay = 0L;
+        this.entranceByMonth = 0L;
+        this.historyEntrance = 0L;
     }
 
     public UserDto(Long id, String image) {
         this.id = id;
         this.image = image;
+        this.entranceByDay = 0L;
+        this.entranceByMonth = 0L;
+        this.historyEntrance = 0L;
     }
 
     public Long getId() {
@@ -62,4 +71,27 @@ public class UserDto {
     }
 
 
+    public Long getEntranceByDay() {
+        return entranceByDay;
+    }
+
+    public void setEntranceByDay(Long entranceByDay) {
+        this.entranceByDay = entranceByDay;
+    }
+
+    public Long getEntranceByMonth() {
+        return entranceByMonth;
+    }
+
+    public void setEntranceByMonth(Long entranceByMonth) {
+        this.entranceByMonth = entranceByMonth;
+    }
+
+    public Long getHistoryEntrance() {
+        return historyEntrance;
+    }
+
+    public void setHistoryEntrance(Long historyEntrance) {
+        this.historyEntrance = historyEntrance;
+    }
 }

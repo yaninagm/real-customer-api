@@ -4,10 +4,10 @@ spring:
   datasource:
     url: jdbc:h2:mem:test
   jpa:
-    show-sql: true
+    show-sql: false
 
   h2:
     console:
-      enabled: true
+      enabled: false
 server:
   port: 8080
