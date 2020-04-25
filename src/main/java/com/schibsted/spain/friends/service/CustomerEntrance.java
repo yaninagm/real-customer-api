@@ -34,13 +34,10 @@ public class CustomerEntrance {
                     .collect(Collectors.joining(", "));
             User newUser = new User("", recordingDto.getImage(), embeddingImageLikeString);
             newUser = userRepository.save(newUser);
-
-            System.out.println(">>>>>>>> user: "+newUser.getId());
             createRecording(newUser, recordingDto);
             UserDto userDto = new UserDto(newUser.getId(), recordingDto.getImage());
             return userDto;
         }
-        System.out.println(">>>>>>>> user: "+user.getId());
         UserDto userDto = new UserDto(user.getId(), user.getUserName(), user.getUserName(), user.getUserName(), user.getImage());
         userDto.setEntranceByDay(counterEntrance.dailyEntranceCount(user));
         userDto.setEntranceByMonth(counterEntrance.monthlyEntranceCount(user));
@@ -91,22 +88,6 @@ public class CustomerEntrance {
         recording.setUserId(newUser.getId());
         recordingRepository.save(recording);
         return recording;
-    }
-    public User createUser(RecordingDto recordingDto){
-        String embeddingImageLikeString = (String) recordingDto.getEmbedding_image().stream().map(Object::toString)
-                .collect(Collectors.joining(", "));
-
-        User newUser = new User("", recordingDto.getImage(), embeddingImageLikeString);
-        newUser = userRepository.save(newUser);
-
-        Recording recording = new Recording();
-        recording.setImage(recordingDto.getImage());
-
-        recording.setEmbeddingImage(embeddingImageLikeString);
-        recording.setPosition(recordingDto.getPosition());
-        recording.setUserId(newUser.getId());
-        recordingRepository.save(recording);
-        return newUser;
     }
 
 }
