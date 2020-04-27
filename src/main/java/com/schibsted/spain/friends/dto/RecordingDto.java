@@ -1,10 +1,12 @@
 package com.schibsted.spain.friends.dto;
-import java.math.BigDecimal;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Arrays;
 
 public class RecordingDto {
     private Long id;
-    private List<BigDecimal> embedding_image;
+    @JsonProperty("embedding_image")
+    private double[] embeddingImage;
     private String position;
     private String image;
 
@@ -16,12 +18,12 @@ public class RecordingDto {
         this.id = id;
     }
 
-    public void setEmbedding_image(List embedding_image) {
-        this.embedding_image = embedding_image;
+    public double[] getEmbeddingImage() {
+        return embeddingImage;
     }
 
-    public List getEmbedding_image() {
-        return embedding_image;
+    public void setEmbeddingImage(double[] embeddingImage) {
+        this.embeddingImage = embeddingImage;
     }
 
     public String getPosition() {
@@ -41,10 +43,11 @@ public class RecordingDto {
 
     @Override
     public String toString() {
-        return "Recording{" +
+        return "RecordingDto{" +
                 "id=" + id +
-                ", embedding_image='" + embedding_image + '\'' +
+                ", embeddingImage=" + Arrays.toString(embeddingImage) +
                 ", position='" + position + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }
