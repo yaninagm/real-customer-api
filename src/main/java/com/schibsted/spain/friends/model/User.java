@@ -16,17 +16,23 @@ public class User {
     private Long entranceByDay;
     private Long entranceByMonth;
     private Long historyEntrance;
+    private String embeddingImage;
 
     public User() {
     }
 
+    public User(String userName, String imagee) {
+        this.userName = userName;
+        this.image = image;
+    }
 
-    public User(String userName, String image) {
+    public User(String userName, String image, String embeddingImage) {
         this.userName = userName;
         this.image = image;
         this.entranceByDay = 0L;
         this.entranceByMonth = 0L;
         this.historyEntrance = 0L;
+        this.embeddingImage = embeddingImage;
     }
 
     public Long getId() {
@@ -89,6 +95,15 @@ public class User {
 
     public void setHistoryEntrance(Long historyEntrance) {
         this.historyEntrance = historyEntrance;
+    }
+
+    @Column(name = "embedding_image", nullable =  true)
+    public String getEmbeddingImage() {
+        return embeddingImage;
+    }
+
+    public void setEmbeddingImage(String embeddingImage) {
+        this.embeddingImage = embeddingImage;
     }
 
     @Override

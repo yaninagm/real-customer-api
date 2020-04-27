@@ -7,7 +7,7 @@ public class Recording {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String embedding_image;
+    private String embeddingImage;
     private String position;
     private String image;
     private Long userId;
@@ -22,12 +22,12 @@ public class Recording {
     }
 
     @Column (name = "embedding_image", nullable = true)
-    public String getEmbedding_image() {
-        return embedding_image;
+    public String getEmbeddingImage() {
+        return embeddingImage;
     }
 
-    public void setEmbedding_image(String embedding_image) {
-        this.embedding_image = embedding_image;
+    public void setEmbeddingImage(String embeddingImage) {
+        this.embeddingImage = embeddingImage;
     }
 
     @Column (name = "position", nullable = true)
@@ -60,7 +60,7 @@ public class Recording {
     public String toString() {
         return "Recording{" +
                 "id=" + id +
-                ", embedding_image='" + embedding_image + '\'' +
+                ", embedding_image='" + embeddingImage + '\'' +
                 ", position='" + position + '\'' +
                 '}';
     }

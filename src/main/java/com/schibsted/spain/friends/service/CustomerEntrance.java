@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Service
 public class CustomerEntrance {
@@ -28,71 +27,46 @@ public class CustomerEntrance {
 
 
     public UserDto saveNewCustomerEntrance(RecordingDto recordingDto){
-        System.out.println(">>>>>>>>>> ENTRADAAA: " + recordingDto.getEmbedding_image());
-        System.out.println(">>>>>>>>>>> ENTRADA 2log: "+recordingDto.getEmbedding_image().get(0));
         User user = getRelatedUser(recordingDto);
         if (Objects.isNull(user)){
-            User newUser = createRecordingAndUser(recordingDto);
+            //String embeddingImageLikeString2 = (String) recordingDto.getEmbedding_image2().stream().map(Object::toString).collect(Collectors.joining(", "));
+
+            String embeddingImageLikeString = Arrays.toString(recordingDto.getEmbeddingImage()).replace("[", "").replace("]", "");
+            User newUser = new User("", recordingDto.getImage(), embeddingImageLikeString);
+            newUser = userRepository.save(newUser);
+            createRecording(newUser, recordingDto);
             UserDto userDto = new UserDto(newUser.getId(), recordingDto.getImage());
             return userDto;
         }
+        createRecording(user,recordingDto);
         UserDto userDto = new UserDto(user.getId(), user.getUserName(), user.getUserName(), user.getUserName(), user.getImage());
-        userDto.setEntranceByDay(counterEntrance.dailyEntranceCount(user));
-        userDto.setEntranceByMonth(counterEntrance.monthlyEntranceCount(user));
-        userDto.setHistoryEntrance(counterEntrance.historyEntranceCount(user));
         return userDto;
         
     }
 
-    public User createRecordingAndUser(RecordingDto recordingDto){
-        Recording recording = new Recording();
-        recording.setImage(recordingDto.getImage());
-        String listString = (String) recordingDto.getEmbedding_image().stream().map(Object::toString)
-                .collect(Collectors.joining(", "));
-        System.out.println(">>>>> Recording 3: "+listString);
-        recording.setEmbedding_image(listString);
-        recording.setPosition(recordingDto.getPosition());
-        User newUser = new User("", recordingDto.getImage());
-        newUser = userRepository.save(newUser);
-        recording.setUserId(newUser.getId());
-        recordingRepository.save(recording);
-        return newUser;
-    }
-
     public User getRelatedUser(RecordingDto recordingDto){
-        List<Recording> oldrecordings = getCustomerEntrance();
-        Recording sameEmbedding = null;
-        if (!oldrecordings.isEmpty()) {
-            sameEmbedding = sameEmbeding(oldrecordings, recordingDto);
-        }
-        if(Objects.isNull(sameEmbedding)){
-            System.out.println(">>>>>>>>>>>>>>>>>>>> NO EXISTE!!");
+        List<User> users = userRepository.findAll();
+        if (users.isEmpty()) {
             return null;
         }
-        User user = userRepository.getOne(sameEmbedding.getUserId());
-        if (Objects.isNull(user)){
-            user = new User("", recordingDto.getImage());
-        }
-        return user;
+        return userWithSameEmbedding(users, recordingDto);
     }
 
-    public  Recording sameEmbeding(List<Recording> recordings, RecordingDto recordingDto){
-            for (Recording originalRecording: recordings){
-                String[] originalRecordingList =originalRecording.getEmbedding_image().split(",");
-                double[] doubleArray = Arrays.stream(originalRecordingList).mapToDouble(Double::parseDouble).toArray();
-                double result = calculateSimilitud(recordingDto.getEmbedding_image(),doubleArray);
-                System.out.println(">>>>> bool: result: " +result + " " + (result > 0.9));
-                if(result > 0.90){
-                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>< IGUAL <<<<<<<<<<<<<<<< : " + originalRecording.getId() + "result: "+result);
-                    return originalRecording;
+    public  User userWithSameEmbedding(List<User> users, RecordingDto recordingDto){
+            for (User user: users){
+                String[] originalRecordingList =user.getEmbeddingImage().split(",");
+                double[] oldEmbedding = Arrays.stream(originalRecordingList).mapToDouble(Double::parseDouble).toArray();
+                if(calculateSimilitud(oldEmbedding,recordingDto.getEmbeddingImage()) > 0.90){
+                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>< IGUAL <<<<<<<<<<<<<<<< : " + user.getId());
+                    return user;
                 }
             }
             return null;
     }
 
-    public double calculateSimilitud(List embedding, double[] oldEmbedding){
-        double[][] arr = {embedding.stream().mapToDouble(d -> (double) d).toArray()};
-        double result5 = cosineSimilarity.cosineSimilarity(arr[0], oldEmbedding);
+    public double calculateSimilitud(double[] oldEmbedding, double[] embedding){
+
+        double result5 = cosineSimilarity.cosineSimilarity(embedding, oldEmbedding);
         System.out.println("RESULT A-B: "+result5);
         return result5;
     }
@@ -100,6 +74,17 @@ public class CustomerEntrance {
     public  List<Recording>  getCustomerEntrance(){
         List<Recording> recordingList = recordingRepository.findAll();
         return recordingList;
+
+    }
+
+    public Recording createRecording(User newUser, RecordingDto recordingDto){
+        Recording recording = new Recording();
+        recording.setImage(recordingDto.getImage());
+        recording.setEmbeddingImage(newUser.getEmbeddingImage());
+        recording.setPosition(recordingDto.getPosition());
+        recording.setUserId(newUser.getId());
+        recordingRepository.save(recording);
+        return recording;
     }
 
 }
