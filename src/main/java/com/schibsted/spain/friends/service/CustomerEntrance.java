@@ -7,7 +7,9 @@ import com.schibsted.spain.friends.model.User;
 import com.schibsted.spain.friends.repository.RecordingRepository;
 import com.schibsted.spain.friends.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,8 +31,6 @@ public class CustomerEntrance {
     public UserDto saveNewCustomerEntrance(RecordingDto recordingDto){
         User user = getRelatedUser(recordingDto);
         if (Objects.isNull(user)){
-            //String embeddingImageLikeString2 = (String) recordingDto.getEmbedding_image2().stream().map(Object::toString).collect(Collectors.joining(", "));
-
             String embeddingImageLikeString = Arrays.toString(recordingDto.getEmbeddingImage()).replace("[", "").replace("]", "");
             User newUser = new User("", recordingDto.getImage(), embeddingImageLikeString);
             newUser = userRepository.save(newUser);
@@ -54,6 +54,9 @@ public class CustomerEntrance {
 
     public  User userWithSameEmbedding(List<User> users, RecordingDto recordingDto){
             for (User user: users){
+                if(Objects.isNull(user.getEmbeddingImage())){
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User haven't embedding");
+                }
                 String[] originalRecordingList =user.getEmbeddingImage().split(",");
                 double[] oldEmbedding = Arrays.stream(originalRecordingList).mapToDouble(Double::parseDouble).toArray();
                 if(calculateSimilitud(oldEmbedding,recordingDto.getEmbeddingImage()) > 0.90){
@@ -77,12 +80,12 @@ public class CustomerEntrance {
 
     }
 
-    public Recording createRecording(User newUser, RecordingDto recordingDto){
+    public Recording createRecording(User user, RecordingDto recordingDto){
         Recording recording = new Recording();
         recording.setImage(recordingDto.getImage());
-        recording.setEmbeddingImage(newUser.getEmbeddingImage());
+        recording.setEmbeddingImage(user.getEmbeddingImage());
         recording.setPosition(recordingDto.getPosition());
-        recording.setUserId(newUser.getId());
+        recording.setUserId(user.getId());
         recordingRepository.save(recording);
         return recording;
     }
