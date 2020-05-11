@@ -10,7 +10,5 @@ spring:
   h2:
     console:
       enabled: false
-  main:
-    allow-bean-definition-overriding=true
 server:
   port: 8080
