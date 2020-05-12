@@ -1,4 +1,11 @@
+server:
+  port: 8080
+
 spring:
+  kafka:
+    bootstrapAddress:
+      localhost:9092
+
   profiles:
     active: test
   datasource:
@@ -10,13 +17,17 @@ spring:
     console:
       enabled: true
 
-server:
-  port: 8080
 
 
 
 
 
 
+message:
+  topic:
+    name:  baeldung
 
 
+partitioned:
+  topic:
+    name: partitioned
