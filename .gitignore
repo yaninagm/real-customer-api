@@ -4,11 +4,3 @@
 /build/*
 build/*
 *build*
-build/classes/java/main/com/schibsted/spain/friends/Service/FriendShipService.class
-build/classes/java/main/com/schibsted/spain/friends/Service/SignupService.class
-build/classes/java/main/com/schibsted/spain/friends/legacy/FriendshipLegacyController.class
-build/classes/java/main/com/schibsted/spain/friends/legacy/SignupLegacyController.class
-build/classes/java/main/com/schibsted/spain/friends/model/RelationShip.class
-build/classes/java/main/com/schibsted/spain/friends/model/User.class
-build/resources/main/data.sql
-build/classes/java/main/com/schibsted/spain/friends/legacy/FriendshipLegacyController.class
