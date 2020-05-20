@@ -8,8 +8,6 @@ ext {
 	springKafkaVersion = '2.4.6.RELEASE'
 }
 
-
-group = 'es.schibsted'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
