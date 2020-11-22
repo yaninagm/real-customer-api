@@ -16,6 +16,11 @@ public class ProductIdintify {
     private Date dateCreated;
     private String descripction;
 
+
+private static final String            videoUrl = "https://www.youtube.com/watch?v=PsaFVLr8t4E";
+    private static final String            title = "Conference Opening Keynote";
+    private static final String speaker = "Andrey Breslav";
+
     public ProductIdintify(Long id, String name, String urlQr, String dinamicUrl, Date dateCreated, String descripction) {
         this.id = id;
         this.name = name;
@@ -71,5 +76,18 @@ public class ProductIdintify {
 
     public void setDescripction(String descripction) {
         this.descripction = descripction;
+    }
+
+
+    public static String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public static String getTitle() {
+        return title;
+    }
+
+    public static String getSpeaker() {
+        return speaker;
     }
 }
