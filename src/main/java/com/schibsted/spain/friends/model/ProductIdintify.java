@@ -17,9 +17,9 @@ public class ProductIdintify {
     private String descripction;
 
 
-private static final String            videoUrl = "https://www.youtube.com/watch?v=PsaFVLr8t4E";
-    private static final String            title = "Conference Opening Keynote";
-    private static final String speaker = "Andrey Breslav";
+private String            videoUrl ;
+    private String            title ;
+    private String speaker ;
 
     public ProductIdintify(Long id, String name, String urlQr, String dinamicUrl, Date dateCreated, String descripction) {
         this.id = id;
@@ -28,6 +28,9 @@ private static final String            videoUrl = "https://www.youtube.com/watch
         this.dinamicUrl = dinamicUrl;
         this.dateCreated = dateCreated;
         this.descripction = descripction;
+        this.videoUrl = "https://www.youtube.com/watch?v=PsaFVLr8t4E";
+        this.title = "Conference Opening Keynote";
+        this.speaker =  "Conference Opening Keynote";
     }
 
     public Long getId() {
@@ -78,16 +81,27 @@ private static final String            videoUrl = "https://www.youtube.com/watch
         this.descripction = descripction;
     }
 
-
-    public static String getVideoUrl() {
+    public String getVideoUrl() {
         return videoUrl;
     }
 
-    public static String getTitle() {
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
+    public String getTitle() {
         return title;
     }
 
-    public static String getSpeaker() {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSpeaker() {
         return speaker;
+    }
+
+    public void setSpeaker(String speaker) {
+        this.speaker = speaker;
     }
 }
