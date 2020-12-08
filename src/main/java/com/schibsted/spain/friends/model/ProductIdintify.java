@@ -11,26 +11,19 @@ public class ProductIdintify {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String urlQr;
+    private String urlQrId;
     private String dinamicUrl;
     private Date dateCreated;
-    private String descripction;
+    private String description;
 
 
-private String            videoUrl ;
-    private String            title ;
-    private String speaker ;
-
-    public ProductIdintify(Long id, String name, String urlQr, String dinamicUrl, Date dateCreated, String descripction) {
+    public ProductIdintify(Long id, String name, String urlQrId, String dinamicUrl, Date dateCreated, String description) {
         this.id = id;
         this.name = name;
-        this.urlQr = urlQr;
+        this.urlQrId = urlQrId;
         this.dinamicUrl = dinamicUrl;
         this.dateCreated = dateCreated;
-        this.descripction = descripction;
-        this.videoUrl = "https://www.youtube.com/watch?v=PsaFVLr8t4E";
-        this.title = "Conference Opening Keynote";
-        this.speaker =  "Conference Opening Keynote";
+        this.description = description;
     }
 
     public Long getId() {
@@ -49,12 +42,12 @@ private String            videoUrl ;
         this.name = name;
     }
 
-    public String getUrlQr() {
-        return urlQr;
+    public String getUrlQrId() {
+        return urlQrId;
     }
 
-    public void setUrlQr(String urlQr) {
-        this.urlQr = urlQr;
+    public void setUrlQrId(String urlQrId) {
+        this.urlQrId = urlQrId;
     }
 
     public String getDinamicUrl() {
@@ -73,35 +66,11 @@ private String            videoUrl ;
         this.dateCreated = dateCreated;
     }
 
-    public String getDescripction() {
-        return descripction;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripction(String descripction) {
-        this.descripction = descripction;
-    }
-
-    public String getVideoUrl() {
-        return videoUrl;
-    }
-
-    public void setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getSpeaker() {
-        return speaker;
-    }
-
-    public void setSpeaker(String speaker) {
-        this.speaker = speaker;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
