@@ -3,6 +3,7 @@
 */gradle-wrapper.propertie
 /build/*
 build/*
+build/
 *build*
 build/classes/java/main/com/schibsted/spain/friends/Service/FriendShipService.class
 build/classes/java/main/com/schibsted/spain/friends/Service/SignupService.class

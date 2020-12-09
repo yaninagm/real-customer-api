@@ -14,7 +14,7 @@ public class GenerateQrService {
 
     public String getDinamicUrl(String urlQrId) {
         Date newDate = new Date();
-        ProductIdentifier productIdentifier = productIdentifierRepository.findByUrlQrId(urlQrId);
+        ProductIdentifier productIdentifier = productIdentifierRepository.findByUrlQrId(urlQrId).get(0);
 
 
         String qrForUse = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ENCODEURL(https://qr-generator-redirect.herokuapp.com/qrByProduct/?id="+urlQrId+")";
