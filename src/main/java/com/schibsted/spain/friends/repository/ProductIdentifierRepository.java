@@ -10,6 +10,5 @@ import java.util.List;
 @Repository
 public interface ProductIdentifierRepository extends JpaRepository<ProductIdentifier, Long> {
 
-    @Query(value = "SELECT t FROM ProductIdentifier t where t.urlQrId = :urlQrId")
     public List<ProductIdentifier> findByUrlQrId(String urlQrId);
 }
