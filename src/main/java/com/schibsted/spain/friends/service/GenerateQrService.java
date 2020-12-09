@@ -14,6 +14,7 @@ public class GenerateQrService {
 
     public String getDinamicUrl(String urlQrId) {
         Date newDate = new Date();
+        productIdentifierRepository.findByUrlQrId(urlQrId);
         //ProductIdentifier productIdentifier = productIdentifierRepository.findByUrlQrId(urlQrId).get(0);
 
 
