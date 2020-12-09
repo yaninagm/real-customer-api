@@ -19,8 +19,3 @@ CREATE TABLE productIdentifier(
  dinamic_url VARCHAR (500),
  `date_created` DATETIME
  );
-
-INSERT INTO productIdentifier (urlQrId, name, description, dinamic_url, date_created)
-VALUES ("12343554", "Terreno Carrizal", "terreno Carrizal para la venta",
- "https://www.remax.com.ar/es-ar/propiedades/cabana/venta/el-carrizal/barrio-el-coral/420971002-109?LFPNNSource=RecentlyListedOfficeProperties&cKey=420971002-109"
- );
