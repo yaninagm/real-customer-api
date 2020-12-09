@@ -6,20 +6,10 @@ import javax.persistence.*;
 public class Recording {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String embeddingImage;
     private String position;
     private String image;
     private Long userId;
-
-    @Column (name = "id", nullable = true)
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Column (name = "embedding_image", nullable = true)
     public String getEmbeddingImage() {
