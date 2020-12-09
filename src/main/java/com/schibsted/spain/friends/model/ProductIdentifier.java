@@ -1,11 +1,11 @@
 package com.schibsted.spain.friends.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
-public class ProductIdintify {
+@Entity
+@Table(name = "productIdentifier")
+public class ProductIdentifier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,13 +17,17 @@ public class ProductIdintify {
     private String description;
 
 
-    public ProductIdintify(Long id, String name, String urlQrId, String dinamicUrl, Date dateCreated, String description) {
+    public ProductIdentifier(Long id, String name, String urlQrId, String dinamicUrl, Date dateCreated, String description) {
         this.id = id;
         this.name = name;
         this.urlQrId = urlQrId;
         this.dinamicUrl = dinamicUrl;
         this.dateCreated = dateCreated;
         this.description = description;
+    }
+
+    public ProductIdentifier() {
+
     }
 
     public Long getId() {
@@ -34,6 +38,7 @@ public class ProductIdintify {
         this.id = id;
     }
 
+    @Column(name = "name", nullable = true)
     public String getName() {
         return name;
     }
@@ -42,6 +47,7 @@ public class ProductIdintify {
         this.name = name;
     }
 
+    @Column(name = "get_url_qr_id", nullable = true)
     public String getUrlQrId() {
         return urlQrId;
     }
@@ -50,6 +56,7 @@ public class ProductIdintify {
         this.urlQrId = urlQrId;
     }
 
+    @Column(name = "get_dinamic_url", nullable = true)
     public String getDinamicUrl() {
         return dinamicUrl;
     }
@@ -58,6 +65,7 @@ public class ProductIdintify {
         this.dinamicUrl = dinamicUrl;
     }
 
+    @Column(name = "date_created", nullable = true)
     public Date getDateCreated() {
         return dateCreated;
     }
@@ -66,11 +74,24 @@ public class ProductIdintify {
         this.dateCreated = dateCreated;
     }
 
+    @Column(name = "description", nullable = true)
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductIdentifier{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", urlQrId='" + urlQrId + '\'' +
+                ", dinamicUrl='" + dinamicUrl + '\'' +
+                ", dateCreated=" + dateCreated +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

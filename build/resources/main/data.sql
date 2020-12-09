@@ -9,3 +9,13 @@ CREATE TABLE friendshiprequest(id BIGINT(20) AUTO_INCREMENT, user_from VARCHAR (
 
 DROP TABLE IF EXISTS `recording`;
 CREATE TABLE recording(id BIGINT(20) AUTO_INCREMENT, embedding_image VARCHAR (5000) NOT NULL, position VARCHAR (255), image VARCHAR (255), user_id BIGINT(20) );
+
+DROP TABLE IF EXISTS `productIdentifier`;
+CREATE TABLE productIdentifier(
+ id BIGINT(20) AUTO_INCREMENT,
+ urlQrId VARCHAR (500),
+ name VARCHAR (500) NOT NULL,
+ description VARCHAR (500),
+ dinamicUrl VARCHAR (500),
+ `date_created` DATETIME
+ );
