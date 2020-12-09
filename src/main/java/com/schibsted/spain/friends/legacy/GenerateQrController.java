@@ -17,6 +17,6 @@ public class GenerateQrController {
     Object getCustomerEntrance(
             @PathVariable String id
     )throws Exception {
-        return  generateQrService.getProduct(id);
+        return  generateQrService.getDinamicUrl(id);
     }
 }

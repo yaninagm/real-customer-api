@@ -13,9 +13,12 @@ CREATE TABLE recording(id BIGINT(20) AUTO_INCREMENT, embedding_image VARCHAR (50
 DROP TABLE IF EXISTS `productIdentifier`;
 CREATE TABLE productIdentifier(
  id BIGINT(20) AUTO_INCREMENT,
- urlQrId VARCHAR (500),
- name VARCHAR (500) NOT NULL,
+ urlQrId VARCHAR (500) NOT NULL,
+ name VARCHAR (500) ,
  description VARCHAR (500),
- dinamicUrl VARCHAR (500),
+ dinamic_url VARCHAR (500),
  `date_created` DATETIME
  );
+
+INSERT INTO productIdentifier (urlQrId, name, description, dinamic_url, date_created)
+VALUES (value1, value2, value3, ...);
