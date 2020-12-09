@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "productIdentifier")
+@Table(name = "product_identifier")
 public class ProductIdentifier {
 
     @Id
