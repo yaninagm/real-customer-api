@@ -49,7 +49,6 @@ public class Recording {
     @Override
     public String toString() {
         return "Recording{" +
-                "id=" + id +
                 ", embedding_image='" + embeddingImage + '\'' +
                 ", position='" + position + '\'' +
                 '}';
