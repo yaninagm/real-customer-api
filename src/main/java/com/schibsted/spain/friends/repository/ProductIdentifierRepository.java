@@ -5,10 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+
 
 @Repository
 public interface ProductIdentifierRepository extends JpaRepository<ProductIdentifier, Long> {
 
-    public List<ProductIdentifier> findByUrlQrId(String urlQrId);
+    @Query(value = "SELECT p FROM ProductIdentifier p where p.urlQrId = :urlQrId")
+    public ProductIdentifier findByUrlQrId(String urlQrId);
 }

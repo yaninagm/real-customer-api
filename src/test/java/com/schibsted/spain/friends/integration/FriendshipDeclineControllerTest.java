@@ -7,7 +7,7 @@ import com.schibsted.spain.friends.repository.FriendshipRequestRepository;
 import com.schibsted.spain.friends.repository.UserRepository;
 import com.schibsted.spain.friends.service.FriendshipService;
 import com.schibsted.spain.friends.service.ValidationsService;
-import com.schibsted.spain.friends.legacy.FriendshipLegacyController;
+import com.schibsted.spain.friends.controller.FriendshipLegacyController;
 import com.schibsted.spain.friends.service.LoginService;
 import org.junit.Rule;
 import org.junit.Test;

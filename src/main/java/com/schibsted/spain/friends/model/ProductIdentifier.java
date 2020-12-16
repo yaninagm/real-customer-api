@@ -47,7 +47,7 @@ public class ProductIdentifier {
         this.name = name;
     }
 
-    @Column(name = "get_url_qr_id", nullable = true)
+    @Column(name = "url_qr_id", nullable = true)
     public String getUrlQrId() {
         return urlQrId;
     }
@@ -56,7 +56,7 @@ public class ProductIdentifier {
         this.urlQrId = urlQrId;
     }
 
-    @Column(name = "get_dinamic_url", nullable = true)
+    @Column(name = "dinamic_url", nullable = true)
     public String getDinamicUrl() {
         return dinamicUrl;
     }

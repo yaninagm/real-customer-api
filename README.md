@@ -63,4 +63,23 @@ Dec 10 00:01:03 real-customer app[web] info 2020-12-09 23:01:02.610  WARN 4 --- 
 Dec 10 00:01:03 real-customer app[web] info 2020-12-09 23:01:02.610 ERROR 4 --- [io-37942-exec-6] o.h.engine.jdbc.spi.SqlExceptionHelper   : Unknown column 'productide0_.id' in 'field list' 
 Dec 10 00:01:03 real-customer app[web] info 2020-12-09 23:01:02.611 ERROR 4 --- [io-37942-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet] with root cause 
 Dec 10 00:01:03 real-customer app[web] info
-Dec 10 00:01:03 real-customer app[web] info java.sql.SQLSyntaxErrorException: Unknown column 'productide0_.id' in 'field list'
+Dec 10 00:01:03 real-customexr app[web] info java.sql.SQLSyntaxErrorException: Unknown column 'productide0_.id' in 'field list'
+
+
+
+curl -X POST 'http://localhost:8080/qrByProduct'   -H "Content-Type: application/json" --data '{
+"id":1,
+"name":"lalala",
+"urlQrId":"8989",
+"dinamicUrl":"www.milanuncios.com",
+"dateCreated":"",
+"description":"lelelel"
+}'
+
+
+para los nombres camelizados poner:
+spring:
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl

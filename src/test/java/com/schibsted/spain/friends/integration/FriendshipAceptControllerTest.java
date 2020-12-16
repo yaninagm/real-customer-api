@@ -1,7 +1,7 @@
 package com.schibsted.spain.friends.integration;
 
 import com.schibsted.spain.friends.config.Constants;
-import com.schibsted.spain.friends.legacy.FriendshipLegacyController;
+import com.schibsted.spain.friends.controller.FriendshipLegacyController;
 import com.schibsted.spain.friends.model.FriendshipRequest;
 import com.schibsted.spain.friends.model.User;
 import com.schibsted.spain.friends.repository.FriendshipRequestRepository;

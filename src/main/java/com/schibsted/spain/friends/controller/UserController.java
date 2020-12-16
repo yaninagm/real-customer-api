@@ -1,4 +1,4 @@
-package com.schibsted.spain.friends.legacy;
+package com.schibsted.spain.friends.controller;
 
 import com.schibsted.spain.friends.dto.UserDto;
 import com.schibsted.spain.friends.service.UserService;

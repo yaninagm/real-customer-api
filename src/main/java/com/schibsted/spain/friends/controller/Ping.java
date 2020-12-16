@@ -1,4 +1,4 @@
-package com.schibsted.spain.friends.legacy;
+package com.schibsted.spain.friends.controller;
 
 import org.springframework.web.bind.annotation.*;
 

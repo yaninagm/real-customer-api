@@ -1,4 +1,4 @@
-package com.schibsted.spain.friends.legacy;
+package com.schibsted.spain.friends.controller;
 
 import com.schibsted.spain.friends.config.Constants;
 import com.schibsted.spain.friends.repository.FriendshipRequestRepository;
