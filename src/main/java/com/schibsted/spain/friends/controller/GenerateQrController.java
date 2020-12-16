@@ -8,18 +8,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/qrByProduct")
+@RequestMapping("/productIdentifier")
 public class GenerateQrController {
 
     @Autowired
     private GenerateQrService generateQrService;
 
 
-    @GetMapping("/{urlQrId}")
-    Object getCustomerEntrance(
+    @GetMapping("/dinamicUrl/{urlQrId}")
+    Object getDinamicUrl(
             @PathVariable String urlQrId
     )throws Exception {
         return  generateQrService.getDinamicUrl(urlQrId);
+    }
+
+    @GetMapping("/qrImage/{urlQrId}")
+    Object getProductIdentifier(
+            @PathVariable String urlQrId
+    )throws Exception {
+        return  generateQrService.getProductIdentifier(urlQrId);
     }
 
     @PostMapping()

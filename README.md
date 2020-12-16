@@ -67,17 +67,18 @@ Dec 10 00:01:03 real-customexr app[web] info java.sql.SQLSyntaxErrorException: U
 
 
 
-curl -X POST 'http://localhost:8080/qrByProduct'   -H "Content-Type: application/json" --data '{
-"id":1,
+curl -X POST 'http://localhost:8080/productIdentifier'   -H "Content-Type: application/json" --data '{
 "name":"lalala",
-"urlQrId":"8989",
-"dinamicUrl":"www.milanuncios.com",
+"urlQrId":"898942",
+"dinamicUrl":"www.2milanuncios5.com",
 "dateCreated":"",
 "description":"lelelel"
 }'
 
+http://localhost:8080/productIdentifier/dinamicUrl/898942
 
-para los nombres camelizados poner:
+
+## para los nombres camelizados poner:
 spring:
   jpa:
     hibernate:

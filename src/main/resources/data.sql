@@ -12,10 +12,12 @@ CREATE TABLE recording(id BIGINT(20) AUTO_INCREMENT, embedding_image VARCHAR (50
 
 DROP TABLE IF EXISTS `product_identifier`;
 CREATE TABLE product_identifier(
- id BIGINT(20) AUTO_INCREMENT,
- url_qr_id VARCHAR (500) NOT NULL,
  name VARCHAR (500) ,
- description VARCHAR (500),
+ url_qr_id VARCHAR (500) NOT NULL,
  dinamic_url VARCHAR (500),
- date_created DATETIME
+ description VARCHAR (500),
+ date_created DATETIME,
+ id BIGINT(20) AUTO_INCREMENT,
+ constraint product_identifier_url_qr_id_uindex
+        unique (url_qr_id)
  );
